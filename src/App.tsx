@@ -62,20 +62,20 @@ export default function App() {
         )}
 
         <section>
+          <AddPlayerForm />
+        </section>
+
+        <section>
+          <EliminationForm players={players} />
+        </section>
+
+        <section>
           <h2 className="section-title">Leaderboard</h2>
           {loading ? (
             <div className="loading">Loading players…</div>
           ) : (
             <Leaderboard players={players} playersById={playersById} />
           )}
-        </section>
-
-        <section>
-          <AddPlayerForm />
-        </section>
-
-        <section>
-          <EliminationForm players={players} />
         </section>
       </main>
 
