@@ -100,21 +100,24 @@ h1, h2, h3 {
   border: none;
   border-bottom: 3px solid transparent;
   margin-bottom: -3px;
-  color: rgba(232, 201, 122, 0.6);
+  color: rgba(232, 201, 122, 0.5);
   font-size: 15px;
   font-family: Georgia, serif;
   cursor: pointer;
-  transition: color 0.15s, border-color 0.15s;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
   letter-spacing: 0.02em;
 }
 
 .tab:hover {
   color: var(--gold-light);
+  background: rgba(255,255,255,0.05);
 }
 
 .tab.active {
-  color: var(--gold-light);
+  color: var(--green-dark);
+  background: var(--gold);
   border-bottom-color: var(--gold);
+  font-weight: bold;
 }
 
 .app-main {
