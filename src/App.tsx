@@ -6,10 +6,13 @@ import { AddPlayerForm } from './components/AddPlayerForm'
 import { EliminationForm } from './components/EliminationForm'
 import './App.css'
 
+type Tab = 'leaderboard' | 'kill' | 'join'
+
 export default function App() {
   const [players, setPlayers] = useState<Player[]>([])
   const [loading, setLoading] = useState(true)
   const [fetchError, setFetchError] = useState<string | null>(null)
+  const [tab, setTab] = useState<Tab>('leaderboard')
 
   const playersById = new Map(players.map(p => [p.id, p]))
 
@@ -35,15 +38,11 @@ export default function App() {
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'players' },
-        () => {
-          fetchPlayers()
-        }
+        () => { fetchPlayers() }
       )
       .subscribe()
 
-    return () => {
-      supabase.removeChannel(channel)
-    }
+    return () => { supabase.removeChannel(channel) }
   }, [])
 
   return (
@@ -55,27 +54,51 @@ export default function App() {
         </div>
       </header>
 
+      <nav className="tabs">
+        <button
+          className={`tab ${tab === 'leaderboard' ? 'active' : ''}`}
+          onClick={() => setTab('leaderboard')}
+        >
+          Leaderboard
+        </button>
+        <button
+          className={`tab ${tab === 'kill' ? 'active' : ''}`}
+          onClick={() => setTab('kill')}
+        >
+          Log Kill
+        </button>
+        <button
+          className={`tab ${tab === 'join' ? 'active' : ''}`}
+          onClick={() => setTab('join')}
+        >
+          Join Game
+        </button>
+      </nav>
+
       <main className="app-main">
-        {fetchError && (
-          <div className="banner-error">{fetchError}</div>
+        {fetchError && <div className="banner-error">{fetchError}</div>}
+
+        {tab === 'leaderboard' && (
+          <section>
+            {loading ? (
+              <div className="loading">Loading players…</div>
+            ) : (
+              <Leaderboard players={players} playersById={playersById} />
+            )}
+          </section>
         )}
 
-        <section>
-          <AddPlayerForm />
-        </section>
+        {tab === 'kill' && (
+          <section>
+            <EliminationForm players={players} />
+          </section>
+        )}
 
-        <section>
-          <EliminationForm players={players} />
-        </section>
-
-        <section>
-          <h2 className="section-title">Leaderboard</h2>
-          {loading ? (
-            <div className="loading">Loading players…</div>
-          ) : (
-            <Leaderboard players={players} playersById={playersById} />
-          )}
-        </section>
+        {tab === 'join' && (
+          <section>
+            <AddPlayerForm />
+          </section>
+        )}
       </main>
 
       <footer className="app-footer">

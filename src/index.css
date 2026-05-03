@@ -86,6 +86,37 @@ h1, h2, h3 {
   margin: 0;
 }
 
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  background: var(--green-dark);
+  border-bottom: 3px solid var(--gold);
+}
+
+.tab {
+  flex: 1;
+  padding: 14px 8px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -3px;
+  color: rgba(232, 201, 122, 0.6);
+  font-size: 15px;
+  font-family: Georgia, serif;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  letter-spacing: 0.02em;
+}
+
+.tab:hover {
+  color: var(--gold-light);
+}
+
+.tab.active {
+  color: var(--gold-light);
+  border-bottom-color: var(--gold);
+}
+
 .app-main {
   flex: 1;
   max-width: 600px;
