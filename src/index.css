@@ -1,0 +1,321 @@
+/* ── Camp Fircom Wedding Theme ── */
+:root {
+  --green-dark:   #1e3a2f;
+  --green:        #2d5a40;
+  --green-mid:    #3a7055;
+  --green-light:  #4e9268;
+  --green-pale:   #e8f2ec;
+  --gold:         #c9a84c;
+  --gold-light:   #e8c97a;
+  --gold-pale:    #fdf6e3;
+  --cream:        #faf8f2;
+  --brown:        #7a5c3a;
+  --text:         #3d3228;
+  --text-muted:   #7a6e65;
+  --border:       #c4d9cc;
+  --shadow-sm:    0 1px 4px rgba(30,58,47,0.10);
+  --shadow-md:    0 4px 16px rgba(30,58,47,0.14);
+  --radius:       10px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--text);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--green-dark);
+  margin: 0;
+}
+
+/* ── Layout ── */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+.app-header {
+  background: var(--green-dark);
+  color: var(--gold-light);
+  text-align: center;
+  padding: 36px 20px 32px;
+  border-bottom: 3px solid var(--gold);
+}
+
+.header-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.header-sub {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 10px;
+}
+
+.app-header h1 {
+  color: var(--gold-light);
+  font-size: clamp(26px, 6vw, 44px);
+  letter-spacing: -0.5px;
+  margin: 0 0 10px;
+}
+
+.header-tagline {
+  font-style: italic;
+  color: rgba(232, 201, 122, 0.75);
+  font-size: 15px;
+  margin: 0;
+}
+
+.app-main {
+  flex: 1;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 28px 16px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+
+/* ── Section titles ── */
+.section-title {
+  font-size: 20px;
+  color: var(--green-dark);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gold);
+}
+
+/* ── Cards ── */
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.card h2 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: var(--green-dark);
+}
+
+/* ── Leaderboard ── */
+.leaderboard {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.leaderboard-empty {
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 24px 0;
+}
+
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  box-shadow: var(--shadow-sm);
+  transition: opacity 0.2s;
+}
+
+.leaderboard-row.eliminated {
+  opacity: 0.55;
+  background: #f5f5f5;
+  text-decoration: none;
+}
+
+.rank {
+  font-size: 13px;
+  color: var(--text-muted);
+  min-width: 28px;
+  font-family: Georgia, serif;
+}
+
+.player-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.player-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--green-dark);
+}
+
+.eliminated .player-name {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.eliminated-label {
+  font-size: 12px;
+  color: var(--brown);
+  font-style: italic;
+}
+
+.player-score {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold);
+  min-width: 32px;
+  text-align: right;
+  font-family: Georgia, serif;
+}
+
+/* ── Forms ── */
+.form-row {
+  display: flex;
+  gap: 8px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: Georgia, serif;
+  color: var(--text);
+  background: #fff;
+  transition: border-color 0.15s;
+  appearance: auto;
+}
+
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  border-color: var(--green-mid);
+  box-shadow: 0 0 0 3px rgba(78, 146, 104, 0.15);
+}
+
+input[type="text"]:disabled,
+select:disabled {
+  background: #f5f5f5;
+  color: var(--text-muted);
+}
+
+/* ── Buttons ── */
+button {
+  cursor: pointer;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: none;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+button[type="submit"]:not(.btn-danger) {
+  background: var(--green);
+  color: #fff;
+  white-space: nowrap;
+}
+
+button[type="submit"]:not(.btn-danger):hover:not(:disabled) {
+  background: var(--green-mid);
+}
+
+.btn-danger {
+  background: var(--brown);
+  color: #fff;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #9a7050;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Messages ── */
+.form-error {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #c0392b;
+}
+
+.form-success {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: var(--green-mid);
+  font-style: italic;
+}
+
+.banner-error {
+  background: #fdecea;
+  border: 1px solid #f5b7b1;
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #922b21;
+}
+
+.loading {
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 24px 0;
+}
