@@ -52,7 +52,6 @@ export default function App() {
         <div className="header-inner">
           <p className="header-sub">Aiden &amp; Dayna's Wedding</p>
           <h1>Camp Fircom Assassination</h1>
-          <p className="header-tagline">May the best camper survive</p>
         </div>
       </header>
 
