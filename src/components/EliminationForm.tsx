@@ -1,15 +1,13 @@
-import { useState, useId } from 'react'
+import { useState } from 'react'
 import { supabase } from '../supabase'
 import type { Player } from '../supabase'
+import { PlayerSelect } from './PlayerSelect'
 
 interface Props {
   players: Player[]
 }
 
 export function EliminationForm({ players }: Props) {
-  const killerId = useId()
-  const targetId = useId()
-
   const [killer, setKiller] = useState('')
   const [target, setTarget] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -82,34 +80,22 @@ export function EliminationForm({ players }: Props) {
   return (
     <form className="card" onSubmit={handleSubmit}>
       <h2>Record Elimination</h2>
-      <div className="form-group">
-        <label htmlFor={killerId}>Killer</label>
-        <select
-          id={killerId}
-          value={killer}
-          onChange={e => { setKiller(e.target.value); setTarget('') }}
-          disabled={loading}
-        >
-          <option value="">— Select killer —</option>
-          {activePlayers.map(p => (
-            <option key={p.id} value={p.id}>{p.name}</option>
-          ))}
-        </select>
-      </div>
-      <div className="form-group">
-        <label htmlFor={targetId}>Target</label>
-        <select
-          id={targetId}
-          value={target}
-          onChange={e => setTarget(e.target.value)}
-          disabled={loading || !killer}
-        >
-          <option value="">— Select target —</option>
-          {targetOptions.map(p => (
-            <option key={p.id} value={p.id}>{p.name}</option>
-          ))}
-        </select>
-      </div>
+      <PlayerSelect
+        label="Killer"
+        players={activePlayers}
+        value={killer}
+        onChange={id => { setKiller(id); setTarget('') }}
+        placeholder="Search for killer…"
+        disabled={loading}
+      />
+      <PlayerSelect
+        label="Target"
+        players={targetOptions}
+        value={target}
+        onChange={setTarget}
+        placeholder={killer ? 'Search for target…' : 'Select a killer first'}
+        disabled={loading || !killer}
+      />
       <button
         type="submit"
         className="btn-danger"
