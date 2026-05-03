@@ -101,9 +101,6 @@ export default function App() {
         )}
       </main>
 
-      <footer className="app-footer">
-        <p>Camp Fircom · 2025</p>
-      </footer>
     </div>
   )
 }
