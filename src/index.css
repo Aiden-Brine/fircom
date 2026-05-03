@@ -347,6 +347,22 @@ button:disabled {
   color: #922b21;
 }
 
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--green-mid);
+  font-family: Georgia, serif;
+  font-size: inherit;
+  font-style: italic;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link-btn:hover {
+  color: var(--green-dark);
+}
+
 .loading {
   text-align: center;
   color: var(--text-muted);

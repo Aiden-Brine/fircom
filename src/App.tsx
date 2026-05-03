@@ -83,14 +83,14 @@ export default function App() {
             {loading ? (
               <div className="loading">Loading players…</div>
             ) : (
-              <Leaderboard players={players} playersById={playersById} />
+              <Leaderboard players={players} playersById={playersById} onJoinClick={() => setTab('join')} />
             )}
           </section>
         )}
 
         {tab === 'kill' && (
           <section>
-            <EliminationForm players={players} />
+            <EliminationForm players={players} onJoinClick={() => setTab('join')} />
           </section>
         )}
 

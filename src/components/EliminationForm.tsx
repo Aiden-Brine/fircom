@@ -5,9 +5,10 @@ import { PlayerSelect } from './PlayerSelect'
 
 interface Props {
   players: Player[]
+  onJoinClick: () => void
 }
 
-export function EliminationForm({ players }: Props) {
+export function EliminationForm({ players, onJoinClick }: Props) {
   const [killer, setKiller] = useState('')
   const [target, setTarget] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -71,6 +72,15 @@ export function EliminationForm({ players }: Props) {
     setSuccess(`${killerPlayer.name} eliminated ${targetPlayer.name}!`)
     setKiller('')
     setTarget('')
+  }
+
+  if (players.length === 0) {
+    return (
+      <div className="leaderboard-empty">
+        No players yet.{' '}
+        <button className="link-btn" onClick={onJoinClick}>Join Game!</button>
+      </div>
+    )
   }
 
   if (activePlayers.length < 2) {

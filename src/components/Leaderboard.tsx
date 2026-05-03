@@ -3,9 +3,10 @@ import type { Player } from '../supabase'
 interface Props {
   players: Player[]
   playersById: Map<string, Player>
+  onJoinClick: () => void
 }
 
-export function Leaderboard({ players, playersById }: Props) {
+export function Leaderboard({ players, playersById, onJoinClick }: Props) {
   const sorted = [...players].sort((a, b) => {
     if (b.score !== a.score) return b.score - a.score
     return a.name.localeCompare(b.name)
@@ -14,7 +15,8 @@ export function Leaderboard({ players, playersById }: Props) {
   if (sorted.length === 0) {
     return (
       <div className="leaderboard-empty">
-        No players yet. Add one below!
+        No players yet.{' '}
+        <button className="link-btn" onClick={onJoinClick}>Join Game!</button>
       </div>
     )
   }
