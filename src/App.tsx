@@ -51,7 +51,7 @@ export default function App() {
       <header className="app-header">
         <div className="header-inner">
           <p className="header-sub">Aiden &amp; Dayna's Wedding</p>
-          <h1>Camp Fircom Assassination</h1>
+          <h1>Assassins</h1>
         </div>
       </header>
 
